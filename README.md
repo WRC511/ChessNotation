@@ -1,4 +1,4 @@
-# ChessNotation
+# NotationNation
 An application that teaches algebraic notation in Chess within 10 minutes.
 
 Current Roles / Tasks for Building 'Notation Nation'
