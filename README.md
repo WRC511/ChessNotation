@@ -18,5 +18,6 @@ Within both of these two parts of the app, there are three main tasks
   a. Architecting the data<br>
   b. Implementing the UI<br>
   c. Testing that you can click through the app.<br>
+  
 Although you don’t have to use these exact roles, you do have to establish roles and have
 everybody assigned to at least one role.
