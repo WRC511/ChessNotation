@@ -3,7 +3,7 @@ An application that teaches algebraic notation in Chess within 10 minutes.
 
 Current Roles / Tasks for Building 'Notation Nation'
 <hr>
-Role 1: Learning Module Developer (UI Focus)
+Role 1: Learning Module Developer (UI Focus)<br>
 Assigned To: Member A <br>
 Responsibilities:<br>
 Implement the user interface for the Learning portion of the app, including the home page.<br>
@@ -14,7 +14,7 @@ How they'll do it:<br>
 Collaborate with the Learning Data Architect to understand the structure of learning material.<br>
 Use the prototype as reference.<br>
 <hr>
-Role 2: Learning Data Architect & Tester
+Role 2: Learning Data Architect & Tester<br>
 Assigned To: Member B <br>
 Responsibilities:<br>
 Design and implement the data structure for learning content (e.g., chess moves, piece notation, examples).<br>
@@ -26,7 +26,7 @@ Create and manage data files in JS or JSON.<br>
 Work closely with the Learning UI developer to feed content dynamically.<br>
 Write clickthrough tests and log issues found in GitHub Issues.
 <hr>
-Role 3: Quiz Module Developer (UI Focus)
+Role 3: Quiz Module Developer (UI Focus)<br>
 Assigned To: Member C <br>
 Responsibilities:<br>
 Implement the user interface for the quiz portion, including question display, options, and results page.<br>
@@ -37,7 +37,7 @@ Use Bootstrap for consistent styling.<br>
 Work closely with the Quiz Data Architect to dynamically load questions.<br>
 Collaborate with the tester to ensure all flows work correctly.
 <hr>
-Role 4: Quiz Data Architect & Tester
+Role 4: Quiz Data Architect & Tester<br>
 Assigned To: Member D<br>
 Responsibilities:<br>
 Structure and store quiz questions, answers, and scoring logic.<br>
