@@ -9,7 +9,7 @@ Responsibilities:<br>
 Implement the user interface for the Learning portion of the app, including the home page.<br>
 Style content using HTML, CSS, and Bootstrap.<br>
 Build interactive components (e.g., flip cards, move animations) using JavaScript.
-<br>
+<br><br>
 How they'll do it:<br>
 Collaborate with the Learning Data Architect to understand the structure of learning material.
 Use the prototype as reference.<br>
@@ -20,7 +20,7 @@ Responsibilities:<br>
 Design and implement the data structure for learning content (e.g., chess moves, piece notation, examples).<br>
 Ensure users can click through the learning flow without bugs.<br>
 Maintain JSON or JS objects for move data.
-<br>
+<br><br>
 How they'll do it:<br>
 Create and manage data files in JS or JSON.<br>
 Work closely with the Learning UI developer to feed content dynamically.<br>
@@ -31,7 +31,7 @@ Assigned To: Member C <br>
 Responsibilities:<br>
 Implement the user interface for the quiz portion, including question display, options, and results page.<br>
 Handle user interaction and scoring feedback using JavaScript.
-<br>
+<br><br>
 How they'll do it:<br>
 Use Bootstrap for consistent styling.<br>
 Work closely with the Quiz Data Architect to dynamically load questions.<br>
