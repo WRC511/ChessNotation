@@ -11,7 +11,7 @@ Style content using HTML, CSS, and Bootstrap.<br>
 Build interactive components (e.g., flip cards, move animations) using JavaScript.
 <br><br>
 How they'll do it:<br>
-Collaborate with the Learning Data Architect to understand the structure of learning material.
+Collaborate with the Learning Data Architect to understand the structure of learning material.<br>
 Use the prototype as reference.<br>
 <hr>
 Role 2: Learning Data Architect & Tester
