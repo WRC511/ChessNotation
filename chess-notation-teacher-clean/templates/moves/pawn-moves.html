@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Pawn Moves - Chess Notation Teacher</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/board.css">
+    <style>
+        .move-example {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .piece-symbol {
+            font-size: 64px;
+        }
+        .move-arrow {
+            font-size: 32px;
+            color: #1976D2;
+        }
+        .practice-section {
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <a href="../../index.html">Home</a>
+            <span class="nav-separator">/</span>
+            <a href="../pieces.html">Learn Pieces</a>
+            <span class="nav-separator">/</span>
+            <span class="current-page">Learn Moves</span>
+        </nav>
+
+        <header>
+            <h1>Pawn Moves</h1>
+            <div class="notation-explanation">
+                <p>When a pawn moves forward to a square, we write:</p>
+                <p class="definition"><strong>Just the Destination Square</strong></p>
+                <p>For example: <strong>e4</strong> means a pawn moves to square e4</p>
+            </div>
+        </header>
+
+        <main>
+            <div class="move-example">
+                <div class="piece-symbol">♙</div>
+                <div class="move-arrow">→</div>
+                <div class="notation">e4</div>
+            </div>
+
+            <div class="important-note">
+                <p>Remember:</p>
+                <ul>
+                    <li>Pawns are the only pieces that don't use a letter in their notation</li>
+                    <li>Just write the destination square (like e4, d5, etc.)</li>
+                    <li>Pawns can only move forward (unless capturing)</li>
+                </ul>
+            </div>
+
+            <section class="practice-section">
+                <h2>Practice Question</h2>
+                <div class="practice-question">
+                    <p class="question">How would you write: "Pawn moves to square d4"?</p>
+                    <button class="reveal-button">Show Answer</button>
+                    <p class="answer">d4</p>
+                </div>
+            </section>
+
+            <div class="navigation-container">
+                <a href="piece-moves.html" class="nav-button">← Back to Piece Moves</a>
+                <a href="captures.html" class="next-button">Next: Captures →</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.querySelectorAll('.reveal-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                answer.classList.toggle('visible');
+            });
+        });
+    </script>
+</body>
+</html> 

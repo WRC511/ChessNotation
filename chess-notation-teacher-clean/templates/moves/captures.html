@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Captures - Chess Notation Teacher</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/board.css">
+    <style>
+        .move-example {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .piece-symbol {
+            font-size: 64px;
+        }
+        .move-arrow {
+            font-size: 32px;
+            color: #e74c3c;
+        }
+        .practice-section {
+            margin-top: 3rem;
+        }
+        .capture-x {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <a href="../../index.html">Home</a>
+            <span class="nav-separator">/</span>
+            <a href="../pieces.html">Learn Pieces</a>
+            <span class="nav-separator">/</span>
+            <span class="current-page">Learn Moves</span>
+        </nav>
+
+        <header>
+            <h1>Capture Moves</h1>
+            <div class="notation-explanation">
+                <p>When a piece captures another piece, we write:</p>
+                <p class="definition"><strong>Piece Letter + x + Destination Square</strong></p>
+                <p>For example: <strong>Bxe4</strong> means Bishop captures on square e4</p>
+            </div>
+        </header>
+
+        <main>
+            <div class="move-example">
+                <div class="piece-symbol">♗</div>
+                <div class="move-arrow">⚔️</div>
+                <div class="notation">B<span class="capture-x">x</span>e4</div>
+            </div>
+
+            <div class="important-note">
+                <p>Remember:</p>
+                <ul>
+                    <li>Use the piece's letter (K, Q, B, N, R)</li>
+                    <li>Add an 'x' to show it's a capture</li>
+                    <li>Then write the destination square</li>
+                    <li>We don't write what piece was captured</li>
+                </ul>
+            </div>
+
+            <section class="practice-section">
+                <h2>Practice Question</h2>
+                <div class="practice-question">
+                    <p class="question">How would you write: "Queen captures on square f7"?</p>
+                    <button class="reveal-button">Show Answer</button>
+                    <p class="answer">Qxf7</p>
+                </div>
+            </section>
+
+            <div class="navigation-container">
+                <a href="pawn-moves.html" class="nav-button">← Back to Pawn Moves</a>
+                <a href="pawn-captures.html" class="next-button">Next: Pawn Captures →</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.querySelectorAll('.reveal-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                answer.classList.toggle('visible');
+            });
+        });
+    </script>
+</body>
+</html> 

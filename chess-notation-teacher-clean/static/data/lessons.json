@@ -1,0 +1,188 @@
+{
+    "lessons": [
+        {
+            "id": 1,
+            "title": "Learn the Board - Files",
+            "description": "Files are the vertical columns on a chess board, labeled a-h from White's left to right.",
+            "content": {
+                "type": "board",
+                "perspective": "white",
+                "showFiles": true,
+                "showRanks": false,
+                "explanation": "Files are labeled with letters a-h from White's left to right. From Black's perspective, the files appear reversed (h-a)."
+            },
+            "practice": {
+                "question": "What file is this piece on?",
+                "positions": [
+                    {"piece": "♔", "square": "e1"},
+                    {"piece": "♕", "square": "d1"},
+                    {"piece": "♖", "square": "a1"}
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "title": "Learn the Board - Ranks",
+            "description": "Ranks are the horizontal rows on a chess board, numbered 1-8 from White's bottom to top.",
+            "content": {
+                "type": "board",
+                "perspective": "white",
+                "showFiles": false,
+                "showRanks": true,
+                "explanation": "Ranks are numbered 1-8 from bottom to top from White's perspective. From Black's perspective, the ranks appear reversed (8-1)."
+            },
+            "practice": {
+                "question": "What rank is this piece on?",
+                "positions": [
+                    {"piece": "♔", "square": "e1"},
+                    {"piece": "♕", "square": "d8"},
+                    {"piece": "♖", "square": "a4"}
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "title": "Chess Piece Notation",
+            "description": "Learn how each chess piece is represented in algebraic notation.",
+            "content": {
+                "type": "pieces",
+                "pieces": [
+                    {
+                        "name": "King",
+                        "symbol": "♔",
+                        "notation": "K",
+                        "description": "The king is represented by the letter K"
+                    },
+                    {
+                        "name": "Queen",
+                        "symbol": "♕",
+                        "notation": "Q",
+                        "description": "The queen is represented by the letter Q"
+                    },
+                    {
+                        "name": "Rook",
+                        "symbol": "♖",
+                        "notation": "R",
+                        "description": "The rook is represented by the letter R"
+                    },
+                    {
+                        "name": "Bishop",
+                        "symbol": "♗",
+                        "notation": "B",
+                        "description": "The bishop is represented by the letter B"
+                    },
+                    {
+                        "name": "Knight",
+                        "symbol": "♘",
+                        "notation": "N",
+                        "description": "The knight is represented by the letter N (not K)"
+                    },
+                    {
+                        "name": "Pawn",
+                        "symbol": "♙",
+                        "notation": "",
+                        "description": "Pawns don't use a letter - just the square they move to"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 4,
+            "title": "Basic Moves",
+            "description": "Learn how to write basic chess moves in algebraic notation.",
+            "content": {
+                "type": "moves",
+                "moves": [
+                    {
+                        "description": "Moving a piece",
+                        "notation": "Piece letter + destination square",
+                        "examples": [
+                            {
+                                "move": "Ke4",
+                                "explanation": "King moves to e4"
+                            },
+                            {
+                                "move": "Qd5",
+                                "explanation": "Queen moves to d5"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Pawn moves",
+                        "notation": "Just the destination square",
+                        "examples": [
+                            {
+                                "move": "e4",
+                                "explanation": "Pawn moves to e4"
+                            },
+                            {
+                                "move": "d5",
+                                "explanation": "Pawn moves to d5"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "type": "moves",
+            "title": "Captures",
+            "description": "When a piece captures another piece, we write the piece letter, then 'x', then the destination square.",
+            "example": {
+                "piece": "♗",
+                "notation": "Bxe4",
+                "explanation": "Bishop captures on square e4"
+            },
+            "practice": {
+                "question": "How would you write: \"Queen captures on square f7\"?",
+                "answer": "Qxf7"
+            }
+        },
+        {
+            "id": 6,
+            "type": "moves",
+            "title": "Pawn Captures",
+            "description": "When a pawn captures another piece, we write the file it moves from, then 'x', then the destination square.",
+            "example": {
+                "piece": "♙",
+                "notation": "exd5",
+                "explanation": "Pawn from e-file captures on d5"
+            },
+            "practice": {
+                "question": "How would you write: \"Pawn from c-file captures on d4\"?",
+                "answer": "cxd4"
+            }
+        },
+        {
+            "id": 7,
+            "type": "moves",
+            "title": "Check",
+            "description": "When a move puts the opponent's king in check, we add '+' at the end of the move.",
+            "example": {
+                "piece": "♕",
+                "notation": "Qe7+",
+                "explanation": "Queen moves to e7, giving check"
+            },
+            "practice": {
+                "question": "How would you write: \"Bishop moves to f6, giving check\"?",
+                "answer": "Bf6+"
+            }
+        },
+        {
+            "id": 8,
+            "type": "moves",
+            "title": "Checkmate",
+            "description": "When a move delivers checkmate, we add '#' at the end of the move.",
+            "example": {
+                "piece": "♕",
+                "notation": "Qh7#",
+                "explanation": "Queen moves to h7, delivering checkmate"
+            },
+            "practice": {
+                "question": "How would you write: \"Rook moves to e8, delivering checkmate\"?",
+                "answer": "Re8#"
+            }
+        }
+    ]
+} 

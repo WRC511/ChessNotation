@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Files - Chess Notation Teacher</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/board.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <a href="../index.html">Home</a>
+            <span class="nav-separator">/</span>
+            <span class="current-page">Learn Files</span>
+        </nav>
+
+        <header>
+            <h1>Files (Columns)</h1>
+            <div class="notation-explanation">
+                <p>Files are the vertical columns on the chess board.</p>
+                <ul>
+                    <li>White player: Files are labeled <strong>a</strong> through <strong>h</strong> from left to right</li>
+                    <li>Black player: Files are labeled <strong>h</strong> through <strong>a</strong> from left to right</li>
+                </ul>
+            </div>
+        </header>
+
+        <main>
+            <div class="boards-container">
+                <section class="board-section">
+                    <h2>White's View</h2>
+                    <div class="board-container">
+                        <div class="chessboard" id="white-board"></div>
+                        <div class="file-notation-row" id="white-notation"></div>
+                    </div>
+                </section>
+
+                <section class="board-section">
+                    <h2>Black's View</h2>
+                    <div class="board-container">
+                        <div class="chessboard" id="black-board"></div>
+                        <div class="file-notation-row" id="black-notation"></div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="practice-section">
+                <h2>Quick Practice</h2>
+                <div class="practice-questions">
+                    <div class="practice-question">
+                        <p class="question">What is White's leftmost file?</p>
+                        <button class="reveal-button">Show Answer</button>
+                        <p class="answer">File 'a'</p>
+                    </div>
+                    <div class="practice-question">
+                        <p class="question">What is Black's leftmost file?</p>
+                        <button class="reveal-button">Show Answer</button>
+                        <p class="answer">File 'h'</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="navigation-container">
+                <a href="ranks.html" class="next-button">Next: Learn Ranks →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/board.js"></script>
+</body>
+</html> 
