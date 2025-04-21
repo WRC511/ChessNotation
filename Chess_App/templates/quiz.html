@@ -107,7 +107,7 @@
             game = new Chess();
             
             // Check if this is an algebraic notation question (index 6-10)
-            if (question.index >= 6) {
+            if (question.index <= 5) {
                 // Load the specific position and animate the move
                 if (game.load(question.startFen)) {
                     // Show initial position
@@ -173,7 +173,7 @@
             $('#options-container').hide();
 
             // Show the final position after answering for notation questions
-            if (question.index >= 6) {
+            if (question.index <= 5) {
                 game = new Chess(question.startFen);
                 game.move({ from: question.move.from, to: question.move.to, promotion: question.move.promotion || 'q' });
                 board.position(game.fen(), false);
@@ -187,7 +187,6 @@
                     <h3>Your final score: ${score}/5</h3>
                     <p>${getScoreMessage()}</p>
                     <button onclick="location.reload()" class="btn btn-primary">Try Again</button>
-                    <p class="mt-3">Each time you try again, you'll get a different set of questions!</p>
                 </div>
             `);
         }
