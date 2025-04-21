@@ -1,7 +1,7 @@
 # ChessNotation
 An application that teaches algebraic notation in Chess within 10 minutes.
 
-Current Roles / Tasks for Building 'Notation Nation'
+Current Roles / Tasks for Building 'Chess Nation'
 <hr>
 Role 1: Learning Module Developer (UI Focus)<br>
 Assigned To: Member A <br>
