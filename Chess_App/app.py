@@ -158,6 +158,94 @@ lessons = [
     }
 ]
 
+quiz_questions = [
+    {
+        'index': 1,
+        'question': "What is the most powerful piece in chess?",
+        'options': ["King", "Queen", "Rook", "Bishop"],
+        'correct': 1,
+        'explanation': "The Queen is the most powerful piece as it can move any number of squares vertically, horizontally, or diagonally.",
+        'fen': "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    },
+    {
+        'index': 2,
+        'question': "Which piece can jump over other pieces?",
+        'options': ["Bishop", "Knight", "Rook", "Queen"],
+        'correct': 1,
+        'explanation': "The Knight is the only piece that can jump over other pieces. It moves in an L-shape pattern.",
+        'fen': "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    },
+    {
+        'index': 3,
+        'question': "What is the special move where a pawn reaches the opposite side of the board?",
+        'options': ["Castling", "En passant", "Promotion", "Checkmate"],
+        'correct': 2,
+        'explanation': "When a pawn reaches the opposite side of the board, it can be promoted to any other piece (except a king).",
+        'fen': "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    },
+    {
+        'index': 4,
+        'question': "Which move allows the king to move two squares towards a rook?",
+        'options': ["En passant", "Castling", "Promotion", "Check"],
+        'correct': 1,
+        'explanation': "Castling is a special move where the king moves two squares towards a rook, and the rook moves to the square the king crossed.",
+        'fen': "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    },
+    {
+        'index': 5,
+        'question': "What is the term for when a king is in a position to be captured?",
+        'options': ["Checkmate", "Stalemate", "Check", "Draw"],
+        'correct': 2,
+        'explanation': "Check is when a king is under attack and must move out of danger, be protected, or have the attacking piece captured.",
+        'fen': "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    },
+    {
+        'index': 6,
+        'question': "How would you write this move in algebraic notation? (White's move)",
+        'options': ["Ng1-f3", "Nf3", "N1-f3", "Nf1-f3"],
+        'correct': 1,
+        'explanation': "The correct notation is Nf3. In algebraic notation, we don't need to specify the starting square when there's only one knight that can move to f3.",
+        'startFen': "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        'move': {'from': 'g1', 'to': 'f3'}
+    },
+    {
+        'index': 7,
+        'question': "How would you write this move in algebraic notation? (Black's move)",
+        'options': ["Nxc3", "Nf6xc3", "Nxc3+", "Nf6-c3"],
+        'correct': 0,
+        'explanation': "The correct notation is Nxc3. The 'x' indicates a capture, and we don't need to specify the starting square (d5) since there's only one knight that can capture on c3.",
+        'startFen': "r1b1kb1r/ppp1p1pp/8/3n1n2/4P3/2B5/PPPP1PPP/RNBQK1NR b KQkq - 0 1",
+        'move': {'from': 'd5', 'to': 'c3'}
+    },
+    {
+        'index': 8,
+        'question': "How would you write this move in algebraic notation? (White's move)",
+        'options': ["Qd1-h5+", "Qh5", "Qh5+", "Qxh5+"],
+        'correct': 2,
+        'explanation': "The correct notation is Qh5+. The '+' indicates a check, and we don't need to specify the starting square since there's only one queen that can move to h5.",
+        'startFen': "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
+        'move': {'from': 'd1', 'to': 'h5'}
+    },
+    {
+        'index': 9,
+        'question': "How would you write this move in algebraic notation? (Black's move)",
+        'options': ["e5xd4", "e5-d4", "exd4+", "exd4"],
+        'correct': 3,
+        'explanation': "The correct notation is exd4. When a pawn captures, we use the file letter of the pawn followed by 'x' and the destination square. We don't need to specify the starting rank.",
+        'startFen': "rnbqkbnr/pppp1ppp/8/4p3/3P4/8/PPP1PPPP/RNBQKBNR b KQkq - 0 2",
+        'move': {'from': 'e5', 'to': 'd4'}
+    },
+    {
+        'index': 10,
+        'question': "How would you write this move in algebraic notation? (White's move)",
+        'options': ["e7-e8=Q", "e8=Q", "e8Q", "e7-e8Q"],
+        'correct': 1,
+        'explanation': "The correct notation is e8=Q. When a pawn promotes, we write the destination square followed by '=' and the piece it promotes to. We don't need to specify the starting square.",
+        'startFen': "8/4P3/8/8/3k4/8/8/4K3 w - - 0 1",
+        'move': {'from': 'e7', 'to': 'e8', 'promotion': 'q'}
+    }
+]
+
 # Home route
 @app.route('/')
 def home():
@@ -174,9 +262,9 @@ def learn(lesson_id):
     return 'Lesson not found', 404
 
 # (Placeholder) Quiz route: will flesh out in next assignment
-@app.route('/quiz/<int:question_id>')
-def quiz(question_id):
-    return render_template('quiz.html', question_id=question_id)
+@app.route('/quiz')
+def quiz():
+    return render_template('quiz.html', quiz_questions=quiz_questions)
 
 # (Placeholder) Quiz results route
 @app.route('/results')
