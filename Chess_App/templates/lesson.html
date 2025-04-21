@@ -107,7 +107,9 @@
                          data-start="{{ lesson.moves[0].start }}"
                          data-end="{{ lesson.moves[0].end }}">
                         <p>{{ lesson.moves[0].description }}</p>
-                        {% if 'captures' in lesson.title.lower() %}
+                        {% if 'pawn captures' in lesson.title.lower() %}
+                            <p class="notation-hint"><em>Notation format: starting file x file/rank</em></p>
+                        {% elif 'captures' in lesson.title.lower() %}
                             <p class="notation-hint"><em>Notation format: Piece x file/rank</em></p>
                         {% elif 'check' in lesson.title.lower() and 'checkmate' not in lesson.title.lower() %}
                             <p class="notation-hint"><em>Notation format: Piece file/rank+</em></p>
