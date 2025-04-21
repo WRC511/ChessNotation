@@ -159,50 +159,84 @@ lessons = [
 ]
 
 quiz_questions = [
-    {
+        {
         'index': 1,
+        'question': "This is an example of a: ",
+        'options': ["Rank", "File"],
+        'correct': 1,
+        'explanation': "The letter 'a' represents a file in chess notation. Files are the horizontal columns on the chessboard, labeled from a to h from left to right from White's perspective.",
+        'startFen': "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        'move': None,
+        'highlight': ['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8'],
+        'animated': False,
+        'lesson_id': 1
+    },
+    {
+        'index': 2,
+        'question': "This is an example of a:",
+        'options': ["Rank", "File"],
+        'correct': 0,
+        'explanation': "The number '4' represents a rank in chess notation. Ranks are the horizontal rows on the chessboard, labeled from 1 to 8 from bottom to top from White's perspective.",
+        'startFen': "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        'move': None,
+        'highlight': ['a4', 'b4', 'c4', 'd4', 'e4', 'f4', 'g4', 'h4'],
+        'animated': False,
+        'lesson_id': 2
+    },
+    {
+        'index': 3,
         'question': "How would you write this move in algebraic notation? (White's move)",
         'options': ["Ng1-f3", "Nf3", "N1-f3", "Nf1-f3"],
         'correct': 1,
         'explanation': "The correct notation is Nf3. In algebraic notation, we don't need to specify the starting square when there's only one knight that can move to f3.",
         'startFen': "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-        'move': {'from': 'g1', 'to': 'f3'}
+        'move': {'from': 'g1', 'to': 'f3'},
+        'animated': True,
+        'lesson_id': 3
     },
     {
-        'index': 2,
+        'index': 4,
         'question': "How would you write this move in algebraic notation? (Black's move)",
         'options': ["Nxc3", "Nf6xc3", "Nxc3+", "Nf6-c3"],
         'correct': 0,
         'explanation': "The correct notation is Nxc3. The 'x' indicates a capture, and we don't need to specify the starting square (d5) since there's only one knight that can capture on c3.",
         'startFen': "r1b1kb1r/ppp1p1pp/8/3n1n2/4P3/2B5/PPPP1PPP/RNBQK1NR b KQkq - 0 1",
-        'move': {'from': 'd5', 'to': 'c3'}
+        'move': {'from': 'd5', 'to': 'c3'},
+        'animated': True,
+        'lesson_id': 6
     },
     {
-        'index': 3,
+        'index': 5,
         'question': "How would you write this move in algebraic notation? (White's move)",
         'options': ["Qd1-h5+", "Qh5", "Qh5+", "Qxh5+"],
         'correct': 2,
         'explanation': "The correct notation is Qh5+. The '+' indicates a check, and we don't need to specify the starting square since there's only one queen that can move to h5.",
         'startFen': "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
-        'move': {'from': 'd1', 'to': 'h5'}
+        'move': {'from': 'd1', 'to': 'h5'},
+        'animated': True,
+        'lesson_id': 7
     },
     {
-        'index': 4,
+        'index': 6,
         'question': "How would you write this move in algebraic notation? (Black's move)",
         'options': ["e5xd4", "e5-d4", "exd4+", "exd4"],
         'correct': 3,
         'explanation': "The correct notation is exd4. When a pawn captures, we use the file letter of the pawn followed by 'x' and the destination square. We don't need to specify the starting rank.",
         'startFen': "rnbqkbnr/pppp1ppp/8/4p3/3P4/8/PPP1PPPP/RNBQKBNR b KQkq - 0 2",
-        'move': {'from': 'e5', 'to': 'd4'}
+        'move': {'from': 'e5', 'to': 'd4'},
+        'animated': True,
+        'lesson_id': 5
     },
     {
-        'index': 5,
+        'index': 7,
         'question': "How would you write this move in algebraic notation? (White's move)",
         'options': ["e7-e8=Q", "e8=Q", "e8Q", "e7-e8Q"],
         'correct': 1,
         'explanation': "The correct notation is e8=Q. When a pawn promotes, we write the destination square followed by '=' and the piece it promotes to. We don't need to specify the starting square.",
         'startFen': "8/4P3/8/8/3k4/8/8/4K3 w - - 0 1",
-        'move': {'from': 'e7', 'to': 'e8', 'promotion': 'q'}
+        'move': {'from': 'e7', 'to': 'e8', 'promotion': 'q'},
+        'animated': True,
+        'lesson_id': 4
     }
 ]
 
@@ -221,12 +255,28 @@ def learn(lesson_id):
                             total_lessons=len(lessons))
     return 'Lesson not found', 404
 
-# (Placeholder) Quiz route: will flesh out in next assignment
 @app.route('/quiz')
-def quiz():
-    return render_template('quiz.html', quiz_questions=quiz_questions)
+@app.route('/quiz/<int:question_id>')
+def quiz(question_id=None):
+    return render_template('quiz.html', 
+                         quiz_questions=quiz_questions, 
+                         lessons=lessons,
+                         current_question=question_id)
 
-# (Placeholder) Quiz results route
+@app.route('/lesson_content/<int:lesson_id>')
+def lesson_content(lesson_id):
+    if 1 <= lesson_id <= len(lessons):
+        lesson = lessons[lesson_id-1]
+        # Prepare the lesson data for the modal
+        lesson_data = {
+            'title': lesson['title'],
+            'content': lesson['banner'],
+            'board_fen': 'start' if lesson['type'] in ['board', 'moves'] else None,
+            'practice_questions': lesson['practice_questions']
+        }
+        return jsonify(lesson_data)
+    return jsonify({'error': 'Lesson not found'}), 404
+
 @app.route('/results')
 def results():
     return render_template('results.html')

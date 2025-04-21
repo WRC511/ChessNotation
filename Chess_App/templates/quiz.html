@@ -6,6 +6,9 @@
             <!-- Score Display -->
             <div class="text-center mb-4">
                 <h3>Score: <span id="score">0</span>/5</h3>
+                <div class="progress mt-2" style="height: 20px;">
+                    <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                </div>
             </div>
 
             <!-- Chessboard Container -->
@@ -24,7 +27,9 @@
             <!-- Feedback Container -->
             <div id="feedback-container" class="alert d-none">
                 <p id="feedback-text"></p>
-                <button id="next-question" class="btn btn-primary mt-2">Next Question</button>
+                <div class="d-flex justify-content-center mt-3">
+                    <button id="next-question" class="btn btn-primary">Next Question</button>
+                </div>
             </div>
         </div>
     </div>
@@ -35,14 +40,62 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 <script>
-    // Wait for DOM to be fully loaded
     $(document).ready(function() {
-        // Get questions from server
         const allQuestions = {{ quiz_questions|tojson|safe }};
+        const allLessons = {{ lessons|tojson|safe }};
+        let currentQuestion = 0;
+        let score = 0;
+        let game = new Chess();
+        let board = null;
+        let animationTimer = null;
+        let incorrectQuestions = [];
+        let questions = shuffleArray([...allQuestions]).slice(0, 5);
 
-        // Randomly select 5 questions when the quiz starts
+        // Load saved quiz state if it exists and we're returning from a lesson
+        const savedState = localStorage.getItem('quizState');
+        const urlParams = new URLSearchParams(window.location.search);
+        const fromLesson = urlParams.get('from_quiz');
+        
+        if (savedState && fromLesson) {
+            try {
+                const state = JSON.parse(savedState);
+                currentQuestion = state.currentQuestion;
+                score = state.score;
+                incorrectQuestions = state.incorrectQuestions || [];
+                questions = state.questions || shuffleArray([...allQuestions]).slice(0, 5);
+                
+                // Update the score display immediately
+                $('#score').text(score);
+                
+                // Update progress bar
+                const progress = ((currentQuestion) / questions.length) * 100;
+                $('#progress-bar').css('width', progress + '%');
+            } catch (e) {
+                console.error('Error restoring quiz state:', e);
+                clearQuizState();
+            }
+        } else if (!fromLesson) {
+            // If not returning from a lesson, clear any existing state
+            clearQuizState();
+        }
+
+        function saveQuizState() {
+            const state = {
+                currentQuestion,
+                score,
+                incorrectQuestions,
+                questions
+            };
+            localStorage.setItem('quizState', JSON.stringify(state));
+        }
+
+        function clearQuizState() {
+            localStorage.removeItem('quizState');
+        }
+
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -51,39 +104,24 @@
             return array;
         }
 
-        const questions = shuffleArray([...allQuestions]).slice(0, 5);
-
-        let currentQuestion = 0;
-        let score = 0;
-        let game = new Chess();
-        let board = null;
-        let animationTimer = null;
-
         function initializeBoard() {
-            // Destroy existing board if it exists
             if (board) board.destroy();
-            
             const config = {
                 draggable: false,
                 showNotation: true,
                 position: 'start',
                 pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png'
             };
-            
-            // Initialize the board
             board = Chessboard('board', config);
-            
-            // Initialize the game
             game = new Chess();
         }
 
         function displayQuestion() {
-            if (currentQuestion >= 5) {
+            if (currentQuestion >= questions.length) {
                 showResults();
                 return;
             }
 
-            // Clear any existing animation timer
             if (animationTimer) {
                 clearInterval(animationTimer);
                 animationTimer = null;
@@ -103,22 +141,30 @@
                 optionsContainer.append(button);
             });
 
-            // Reset the game and board
             game = new Chess();
             
-            // Check if this is an algebraic notation question (index 6-10)
-            if (question.index <= 5) {
-                // Load the specific position and animate the move
+            // Apply highlighting if specified in the question
+            if (question.highlight) {
+                // Remove any existing highlights
+                $('#board').removeClass('highlight-file-a highlight-rank-4');
+                
+                // Check which type of highlight to apply based on the squares
+                if (question.highlight.includes('h4')) {
+                    $('#board').addClass('highlight-rank-4');
+                } else if (question.highlight.includes('a1')) {
+                    $('#board').addClass('highlight-file-a');
+                }
+            } else {
+                $('#board').removeClass('highlight-file-a highlight-rank-4');
+            }
+
+            if (question.animated == true) {
                 if (game.load(question.startFen)) {
-                    // Show initial position
                     board.position(question.startFen, false);
-                    
-                    // Create animation sequence
                     let isShowingMove = false;
                     
                     animationTimer = setInterval(() => {
                         if (!isShowingMove) {
-                            // Show the move
                             game = new Chess(question.startFen);
                             const moveResult = game.move({
                                 from: question.move.from,
@@ -129,31 +175,29 @@
                             if (moveResult) {
                                 board.position(game.fen(), true);
                                 isShowingMove = true;
-                            } else {
-                                console.error('Invalid move:', question.move);
                             }
                         } else {
-                            // Reset to starting position
                             board.position(question.startFen, true);
                             isShowingMove = false;
                         }
-                    }, 2000); // Toggle every 2 seconds
+                    }, 2000);
                 } else {
-                    console.error('Invalid FEN:', question.startFen);
                     board.start();
                 }
             } else {
-                // For conceptual questions, just show the starting position
                 board.start();
             }
         }
 
         function checkAnswer(selectedIndex) {
-            // Clear animation when answering
             if (animationTimer) {
                 clearInterval(animationTimer);
                 animationTimer = null;
             }
+
+            // Update progress bar
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            $('#progress-bar').css('width', progress + '%');
 
             const question = questions[currentQuestion];
             const feedbackContainer = $('#feedback-container');
@@ -167,33 +211,58 @@
             } else {
                 feedbackContainer.removeClass('alert-success').addClass('alert alert-danger');
                 feedbackText.text('Incorrect. ' + question.explanation);
+                incorrectQuestions.push(question);
             }
             
             feedbackContainer.removeClass('d-none');
             $('#options-container').hide();
 
-            // Show the final position after answering for notation questions
-            if (question.index <= 5) {
+            if (question.move) {
                 game = new Chess(question.startFen);
-                game.move({ from: question.move.from, to: question.move.to, promotion: question.move.promotion || 'q' });
+                game.move({
+                    from: question.move.from,
+                    to: question.move.to,
+                    promotion: question.move.promotion || 'q'
+                });
                 board.position(game.fen(), false);
             }
+
+            // Save quiz state after each answer
+            saveQuizState();
         }
 
         function showResults() {
+            let lessonsToReview = '';
+            if (incorrectQuestions.length > 0) {
+                lessonsToReview = `
+                    <div class="mt-4">
+                        <h4>Lessons to Review:</h4>
+                        <ul class="list-group">
+                            ${incorrectQuestions.map(q => `
+                                <li class="list-group-item">
+                                    <a href="/learn/${q.lesson_id}">${allLessons[q.lesson_id - 1].title}</a>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
             $('.container').html(`
                 <div class="text-center">
                     <h2>Quiz Complete!</h2>
-                    <h3>Your final score: ${score}/5</h3>
+                    <h3>Your final score: ${score}/${questions.length}</h3>
                     <p>${getScoreMessage()}</p>
-                    <button onclick="location.reload()" class="btn btn-primary">Try Again</button>
+                    ${lessonsToReview}
+                    <button onclick="clearQuizState(); location.reload()" class="btn btn-primary mt-4">Try Again</button>
                 </div>
             `);
         }
 
         function getScoreMessage() {
-            if (score === 5) return "Perfect! You're a chess master!";
-            if (score >= 3) return "Good job! You know your chess!";
+            const percentage = (score / questions.length) * 100;
+            if (percentage === 100) return "Perfect! You're a chess master!";
+            if (percentage >= 70) return "Good job! You know your chess!";
             return "Keep practicing! You'll get better!";
         }
 
@@ -219,6 +288,20 @@
     }
     .card {
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .list-group-item a {
+        text-decoration: none;
+        color: #007bff;
+    }
+    .list-group-item a:hover {
+        text-decoration: underline;
+    }
+    #feedback-container {
+        position: relative;
+        min-height: 120px;
+    }
+    #feedback-text {
+        margin-bottom: 0;
     }
 </style>
 {% endblock %}

@@ -230,3 +230,53 @@ body {
     font-size: 0.9rem;
     margin-top: 0.5rem;
 }
+
+/* Quiz Styles */
+.btn-block {
+    width: 100%;
+}
+
+#board {
+    margin-bottom: 20px;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Highlighting Styles */
+.highlight-square {
+    box-shadow: inset 0 0 3px 3px yellow;
+}
+
+/* Specific highlight for files - light squares */
+.highlight-file-a .square-a1,
+.highlight-file-a .square-a3,
+.highlight-file-a .square-a5,
+.highlight-file-a .square-a7 {
+    background-color: rgb(203, 205, 87) !important;
+}
+
+/* Specific highlight for files - dark squares */
+.highlight-file-a .square-a2,
+.highlight-file-a .square-a4,
+.highlight-file-a .square-a6,
+.highlight-file-a .square-a8 {
+    background-color: rgb(238, 240, 181) !important;
+}
+
+/* Specific highlight for rank 4 - light squares */
+.highlight-rank-4 .square-b4,
+.highlight-rank-4 .square-d4,
+.highlight-rank-4 .square-f4,
+.highlight-rank-4 .square-h4 {
+    background-color: rgb(203, 205, 87) !important;
+}
+
+/* Specific highlight for rank 4 - dark squares */
+.highlight-rank-4 .square-a4,
+.highlight-rank-4 .square-c4,
+.highlight-rank-4 .square-e4,
+.highlight-rank-4 .square-g4 {
+    background-color: rgb(238, 240, 181) !important;
+}
