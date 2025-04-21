@@ -83,23 +83,23 @@ Assignment Requirements Met:<br>
 7. user_activity.log<br>
 Purpose: Logs user interactions and activity within the application<br>
 Key Features:<br>
-  - Records timestamps of user actions
-  - Tracks which lessons users visit
-  - Stores interaction data in JSON format
+  - Records timestamps of user actions<br>
+  - Tracks which lessons users visit<br>
+  - Stores interaction data in JSON format<br>
 Assignment Requirements Met:<br>
-  - Implements user activity tracking
-  - Provides data for potential analytics
-  - Demonstrates logging functionality
-  - Shows understanding of server-side data storage
+  - Implements user activity tracking<br>
+  - Provides data for potential analytics<br>
+  - Demonstrates logging functionality<br>
+  - Shows understanding of server-side data storage<br>
 <br><br>
 8. user_data.json<br>
 Purpose: Stores persistent user-related data<br>
 Key Features:<br>
-  - Maintains user progress data
-  - Could be used for storing user preferences or settings
-  - Provides a simple database-like storage solution
+  - Maintains user progress data<br>
+  - Could be used for storing user preferences or settings<br>
+  - Provides a simple database-like storage solution<br>
 Assignment Requirements Met:<br>
-  - Implements data persistence
-  - Shows understanding of JSON data storage
-  - Demonstrates file I/O handling in web applications
+  - Implements data persistence<br>
+  - Shows understanding of JSON data storage<br>
+  - Demonstrates file I/O handling in web applications<br>
 
