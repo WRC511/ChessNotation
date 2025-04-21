@@ -1,53 +1,88 @@
 # ChessNotation
 An application that teaches algebraic notation in Chess within 10 minutes.
 
-Current Roles / Tasks for Building 'Chess Notation'
-<hr>
-Role 1: Learning Module Developer (UI Focus)<br>
-Assigned To: Member A <br>
-Responsibilities:<br>
-Implement the user interface for the Learning portion of the app, including the home page.<br>
-Style content using HTML, CSS, and Bootstrap.<br>
-Build interactive components (e.g., flip cards, move animations) using JavaScript.
-<br><br>
-How they'll do it:<br>
-Collaborate with the Learning Data Architect to understand the structure of learning material.<br>
-Use the prototype as reference.<br>
-<hr>
-Role 2: Learning Data Architect & Tester<br>
-Assigned To: Member B <br>
-Responsibilities:<br>
-Design and implement the data structure for learning content (e.g., chess moves, piece notation, examples).<br>
-Ensure users can click through the learning flow without bugs.<br>
-Maintain JSON or JS objects for move data.
-<br><br>
-How they'll do it:<br>
-Create and manage data files in JS or JSON.<br>
-Work closely with the Learning UI developer to feed content dynamically.<br>
-Write clickthrough tests and log issues found in GitHub Issues.
-<hr>
-Role 3: Quiz Module Developer (UI Focus)<br>
-Assigned To: Member C <br>
-Responsibilities:<br>
-Implement the user interface for the quiz portion, including question display, options, and results page.<br>
-Handle user interaction and scoring feedback using JavaScript.
-<br><br>
-How they'll do it:<br>
-Use Bootstrap for consistent styling.<br>
-Work closely with the Quiz Data Architect to dynamically load questions.<br>
-Collaborate with the tester to ensure all flows work correctly.
-<hr>
-Role 4: Quiz Data Architect & Tester<br>
-Assigned To: Member D<br>
-Responsibilities:<br>
-Structure and store quiz questions, answers, and scoring logic.<br>
-Write clickthrough tests to validate that users can take the quiz, see feedback, and reach the end page without bugs.<br>
+Current Roles
 <br>
-How they'll do it:<br>
-Create a JSON or JS file structure for the quiz questions.<br>
-Connect with the UI developer to bind data with UI components.<br>
-Manually test each quiz path and record results in a shared doc or GitHub Issues.<br>
-Refactor data if new features or quiz types are added.
+Role 1: Learning Module Developer (UI Focus)<br>
+Assigned To: Nick<br>
+Role 2: Learning Data Architect & Tester<br>
+Assigned To: William <br>
+Role 3: Quiz Module Developer (UI Focus)<br>
+Assigned To: Ed <br>
+Role 4: Quiz Data Architect & Tester<br>
+Assigned To: Edward<br>
+<hr>
+FILE DESCRIPTIONS:
+1. `app.py`
+- **Purpose**: Main Flask application file that serves as the backend controller
+- **Key Functions**:
+  - Defines all lesson data and structure
+  - Handles routing for different pages (/home, /learn, /quiz)
+  - Manages user activity logging
+  - Controls lesson progression
+- **Assignment Requirements Met**:
+  - Implements a structured learning path
+  - Manages state and progression through lessons
+  - Handles user interactions and navigation
+  - Provides data for interactive learning content
 
-  
+2. `templates/layout.html`
+- **Purpose**: Base template that provides the common structure for all pages
+- **Key Features**:
+  - Contains the navigation bar
+  - Loads all necessary CSS and JavaScript dependencies
+  - Provides consistent branding and layout
+- **Assignment Requirements Met**:
+  - Ensures consistent user interface across the application
+  - Implements responsive design principles
+  - Integrates required external libraries (Bootstrap, jQuery, Chessboard.js)
+
+3. `templates/home.html`
+- **Purpose**: Landing page that introduces users to the application
+- **Key Features**:
+  - Displays main learning sections in a clear, minimal design
+  - Highlights the starting point with "Start Here" arrow
+  - Shows clear progression path
+- **Assignment Requirements Met**:
+  - Provides clear user onboarding
+  - Implements intuitive navigation
+  - Uses visual cues to guide users
+
+4. `templates/lesson.html`
+- **Purpose**: Template for all lesson pages
+- **Key Features**:
+  - Displays interactive chessboards
+  - Shows lesson content and explanations
+  - Presents practice questions
+  - Handles different lesson types (board, pieces, moves)
+- **Assignment Requirements Met**:
+  - Delivers interactive learning content
+  - Implements practice exercises
+  - Provides immediate feedback through reveal answers
+  - Shows visual demonstrations of concepts
+
+5. `static/css/style.css`
+- **Purpose**: Custom styling for the application
+- **Key Features**:
+  - Defines layout and appearance of all components
+  - Handles responsive design
+  - Styles interactive elements
+- **Assignment Requirements Met**:
+  - Creates engaging user interface
+  - Ensures consistent visual design
+  - Implements proper spacing and hierarchy
+  - Makes content easily readable
+
+6. `static/js/lesson.js`
+- **Purpose**: Handles client-side interactivity
+- **Key Features**:
+  - Initializes and manages chessboards
+  - Handles practice question interactions
+  - Manages move demonstrations with arrows
+  - Logs user activity
+- **Assignment Requirements Met**:
+  - Implements interactive learning features
+  - Provides immediate feedback
+  - Creates engaging visual demonstrations
+  - Tracks user progress
 
