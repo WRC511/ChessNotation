@@ -90,8 +90,7 @@ Assignment Requirements Met:<br>
   - Implements user activity tracking<br>
   - Provides data for potential analytics<br>
   - Demonstrates logging functionality<br>
-  - Shows understanding of server-side data storage<br>
-<br><br>
+  - Shows understanding of server-side data storage<br><br>
 8. user_data.json<br>
 Purpose: Stores persistent user-related data<br>
 Key Features:<br>
