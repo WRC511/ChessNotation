@@ -43,7 +43,7 @@ lessons = [
         'id': 3,
         'title': 'Learn the Pieces',
         'type': 'pieces',
-        'banner': 'Each piece has a unique letter notation, except pawns which use the square they move to.',
+        'banner': 'Each piece has a unique CAPITAL letter notation, except pawns which use the square they move to.',
         'practice_questions': [
             {
                 'question': 'What is the notation for a Knight?',
@@ -70,13 +70,34 @@ lessons = [
         ],
         'practice_questions': [
             {
-                'question': 'How would you notate a pawn moving from e2 to e4?',
-                'answer': 'e4'
+                'question': 'How would you notate a pawn moving from c2 to c4?',
+                'answer': 'c4'
             }
         ]
     },
     {
         'id': 5,
+        'title': 'Learn the Moves - Pawn Captures',
+        'type': 'moves',
+        'banner': 'When a pawn captures, we notate the starting file, then \'x\', then the destination square.',
+        'moves': [
+            {
+                'description': 'Pawn captures diagonally',
+                'start': 'e4',
+                'end': 'f5',
+                'notation': 'exf5',
+                'notation_format': 'starting file x file/rank'
+            }
+        ],
+        'practice_questions': [
+            {
+                'question': 'How would you notate a pawn on the d-file capturing on e5?',
+                'answer': 'dxe5'
+            }
+        ]
+    },
+    {
+        'id': 6,
         'title': 'Learn the Moves - Captures',
         'type': 'moves',
         'banner': 'Captures are notated with an \'x\' between the piece and the destination square.',
@@ -90,13 +111,13 @@ lessons = [
         ],
         'practice_questions': [
             {
-                'question': 'How would you notate a Bishop capturing on e5?',
-                'answer': 'Bxe5'
+                'question': 'How would you notate a Bishop capturing on g7?',
+                'answer': 'Bxg7'
             }
         ]
     },
     {
-        'id': 6,
+        'id': 7,
         'title': 'Learn the Moves - Check',
         'type': 'moves',
         'banner': 'Check is notated with \'+\' at the end of the move.',
@@ -110,13 +131,13 @@ lessons = [
         ],
         'practice_questions': [
             {
-                'question': 'How would you notate a Queen giving check on h5?',
-                'answer': 'Qh5+'
+                'question': 'How would you notate a Queen giving check on f7?',
+                'answer': 'Qf7+'
             }
         ]
     },
     {
-        'id': 7,
+        'id': 8,
         'title': 'Learn the Moves - Checkmate',
         'type': 'moves',
         'banner': 'Checkmate is notated with \'#\' at the end of the move.',
