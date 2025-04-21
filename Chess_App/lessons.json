@@ -1,0 +1,144 @@
+[
+  {
+    "id": 1,
+    "type": "board",
+    "title": "Learn the Board - Files",
+    "banner": "Files are Vertical Columns. They are labeled from left to right, a - h for the white player, and h - a for the black player.",
+    "notation_type": "files",
+    "practice_questions": [
+      {
+        "question": "How is White's leftmost file notated?",
+        "answer": "a"
+      },
+      {
+        "question": "How is Black's leftmost file notated?",
+        "answer": "h"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "type": "board",
+    "title": "Learn the Board - Ranks",
+    "banner": "Ranks are Horizontal Rows. They are labeled from bottom to top, 1 - 8 for the white player, and 8 - 1 for the black player.",
+    "notation_type": "ranks",
+    "practice_questions": [
+      {
+        "question": "Notation for the Rank that is 2 rows above White's 4th Rank?",
+        "answer": "6"
+      },
+      {
+        "question": "Notation for the Rank that is 2 rows above Black's 4th Rank?",
+        "answer": "2"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "type": "pieces",
+    "title": "Learn the Pieces",
+    "banner": "Chess Piece Notation: All chess pieces are notated with a capital letter except for the Pawn. <br>Note: Pawn is not notated with a Capital Letter. It is notated with the file and rank of its square",
+    "pieces": [
+      {
+        "name": "King",
+        "notation": "K",
+        "image": "king.png"
+      },
+      {
+        "name": "Queen",
+        "notation": "Q",
+        "image": "queen.png"
+      },
+      {
+        "name": "Bishop",
+        "notation": "B",
+        "image": "bishop.png"
+      },
+      {
+        "name": "Knight",
+        "notation": "N",
+        "image": "knight.png"
+      },
+      {
+        "name": "Rook",
+        "notation": "R",
+        "image": "rook.png"
+      },
+      {
+        "name": "Pawn",
+        "notation": "file/rank",
+        "image": "pawn.png"
+      }
+    ],
+    "practice_questions": [
+      {
+        "question": "What is the notation for the Knight?",
+        "answer": "N"
+      },
+      {
+        "question": "How do you notate the Pawn?",
+        "answer": "the file/rank of its square"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "type": "moves",
+    "title": "Learn the Moves - Basic Movement",
+    "banner": "Let's learn how to notate basic piece movements on the board.",
+    "moves": [
+      {
+        "description": "Pawn moves 2 squares forward",
+        "notation": "e4",
+        "start": "e2",
+        "end": "e4"
+      }
+    ],
+    "practice_questions": [
+      {
+        "question": "How would you notate a pawn moving from e2 to e4?",
+        "answer": "e4"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "type": "moves",
+    "title": "Learn the Moves - Captures",
+    "banner": "Captures are notated with an 'x' between the piece and the destination square.",
+    "moves": [
+      {
+        "description": "Bishop captures Knight",
+        "notation": "Bxe5",
+        "start": "c3",
+        "end": "e5"
+      }
+    ],
+    "practice_questions": [
+      {
+        "question": "How would you notate a Bishop capturing a piece on e5?",
+        "answer": "Bxe5"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "type": "moves",
+    "title": "Learn the Moves - Check and Checkmate",
+    "banner": "Check is notated with '+' at the end, Checkmate with '#'.",
+    "moves": [
+      {
+        "description": "Queen gives check",
+        "notation": "Qh7+",
+        "start": "d3",
+        "end": "h7"
+      }
+    ],
+    "practice_questions": [
+      {
+        "question": "How would you notate a Queen giving checkmate on h7?",
+        "answer": "Qh7#"
+      }
+    ]
+  }
+]

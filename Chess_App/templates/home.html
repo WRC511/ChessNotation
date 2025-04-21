@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container text-center mt-5">
+    <!-- Banner -->
+    <div class="mb-5">
+        <h1 class="display-4">Chess Notation Teacher</h1>
+        <p class="lead">Master Algebraic Notation for Competitive Play</p>
+    </div>
+
+    <!-- App Sections -->
+    <div class="mt-4">
+        <!-- Section List -->
+        <div class="section-list">
+            <div class="section-item-wrapper">
+                <div class="start-here-arrow">Start Here →</div>
+                <a href="{{ url_for('learn', lesson_id=1) }}" class="section-item active">
+                    <span class="section-number">1</span>
+                    Learn the Board
+                </a>
+            </div>
+            
+            <div class="section-item-wrapper">
+                <a href="{{ url_for('learn', lesson_id=3) }}" class="section-item">
+                    <span class="section-number">2</span>
+                    Learn the Pieces
+                </a>
+            </div>
+            
+            <div class="section-item-wrapper">
+                <a href="{{ url_for('learn', lesson_id=4) }}" class="section-item">
+                    <span class="section-number">3</span>
+                    Learn the Moves
+                </a>
+            </div>
+            
+            <div class="section-item-wrapper">
+                <a href="{{ url_for('quiz', question_id=1) }}" class="section-item">
+                    <span class="section-number">4</span>
+                    Take the Quiz
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-5 text-muted">
+        <p>Designed for competitive players of every level</p>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,232 @@
+/* Center content in lesson boards */
+#white-board, #black-board {
+  margin: 20px auto;
+  width: 300px;
+  height: 300px;
+}
+
+/* Style for revealed answers */
+.answer {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* Practice question buttons */
+.reveal-btn {
+  margin-left: 10px;
+}
+
+/* Optional: Styling for progress bar later */
+.progress-container {
+  margin-top: 20px;
+}
+
+.progress-bar {
+  background-color: #0d6efd;
+}
+
+/* Banner styling for lessons */
+.alert-info {
+  font-size: 1.1em;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: steelblue;
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .btn-outline-light {
+    color: white;
+}
+
+.custom-navbar .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Home Page Styles */
+.section-list {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.section-item-wrapper {
+    position: relative;
+    display: block;
+    margin: 0.5rem 0;
+}
+
+.section-item {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #212529;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: left;
+}
+
+.section-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.section-item.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+.section-number {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.start-here-arrow {
+    position: absolute;
+    right: 105%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #28a745;
+    font-weight: bold;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+/* Chess Board Styles */
+.board-container {
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.chess-board {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.rank-labels {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    bottom: 50px;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+}
+
+.file-labels {
+    position: absolute;
+    left: 50px;
+    right: 50px;
+    bottom: 0;
+    height: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+}
+
+/* Progress Bar */
+.progress {
+    height: 8px;
+    margin: 1rem 0;
+}
+
+/* Practice Questions */
+.practice-questions {
+    margin-top: 2rem;
+}
+
+.practice-question {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+}
+
+.reveal-btn {
+    transition: all 0.3s ease;
+}
+
+.reveal-btn:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Navigation Controls */
+.nav-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.nav-controls .btn-outline-primary {
+    margin-right: auto;
+}
+
+/* Chess Pieces Display */
+.chess-pieces {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.piece-card {
+    text-align: center;
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    width: 150px;
+}
+
+.piece-symbol {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.piece-notation {
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+/* Move Highlighting */
+.highlight-square {
+    box-shadow: inset 0 0 3px 3px yellow;
+}
+
+.move-arrow {
+    pointer-events: none;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.notation-hint {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
