@@ -240,7 +240,7 @@
                         <ul class="list-group">
                             ${incorrectQuestions.map(q => `
                                 <li class="list-group-item">
-                                    <a href="/learn/${q.lesson_id}">${allLessons[q.lesson_id - 1].title}</a>
+                                    <a class="btn btn-outline-primary btn-block mb-2" href="/learn/${q.lesson_id}">${allLessons[q.lesson_id - 1].title}</a>
                                 </li>
                             `).join('')}
                         </ul>
@@ -254,11 +254,16 @@
                     <h3>Your final score: ${score}/${questions.length}</h3>
                     <p>${getScoreMessage()}</p>
                     ${lessonsToReview}
-                    <button onclick="clearQuizState(); location.reload()" class="btn btn-primary mt-4">Try Again</button>
+                    <button id="try-again" class="btn btn-primary mt-4">Try Again</button>
                 </div>
             `);
-        }
 
+            $('#try-again').on('click', function() {
+                clearQuizState();
+                location.reload();
+            });
+        }
+        
         function getScoreMessage() {
             const percentage = (score / questions.length) * 100;
             if (percentage === 100) return "Perfect! You're a chess master!";
