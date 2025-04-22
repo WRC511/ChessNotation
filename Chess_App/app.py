@@ -20,7 +20,9 @@ lessons = [
                 'question': "How is Black's leftmost file notated?",
                 'answer': 'h'
             }
-        ]
+        ],
+        'fen_start': '8/8/8/8/8/8/8/8 w - - 0 1',
+        'fen_end': '8/8/8/8/8/8/8/8 w - - 0 1'
     },
     {
         'id': 2,
@@ -37,7 +39,9 @@ lessons = [
                 'question': 'What rank is 2 squares above Black\'s 4th rank?',
                 'answer': '2'
             }
-        ]
+        ],
+        'fen_start': '8/8/8/8/8/8/8/8 w - - 0 1',
+        'fen_end': '8/8/8/8/8/8/8/8 w - - 0 1'
     },
     {
         'id': 3,
@@ -53,7 +57,9 @@ lessons = [
                 'question': 'How do you notate the Pawn?',
                 'answer': 'the file/rank of its square'
             }
-        ]
+        ],
+        'fen_start': '8/8/8/8/8/8/8/8 w - - 0 1',
+        'fen_end': '8/8/8/8/8/8/8/8 w - - 0 1'
     },
     {
         'id': 4,
@@ -73,7 +79,9 @@ lessons = [
                 'question': 'How would you notate a pawn moving from c2 to c4?',
                 'answer': 'c4'
             }
-        ]
+        ],
+        'fen_start': 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
+        'fen_end': 'rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1'
     },
     {
         'id': 5,
@@ -94,7 +102,9 @@ lessons = [
                 'question': 'How would you notate a pawn on the d-file capturing on e5?',
                 'answer': 'dxe5'
             }
-        ]
+        ],
+        'fen_start': 'rnbqkbnr/ppppp1pp/8/5p2/4P3/8/PPPP1PPP/RNBQKBNR w KQkq f6 0 1',
+        'fen_end': 'rnbqkbnr/ppppp1pp/8/5P2/8/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1'
     },
     {
         'id': 6,
@@ -114,7 +124,9 @@ lessons = [
                 'question': 'How would you notate a Bishop capturing on g7?',
                 'answer': 'Bxg7'
             }
-        ]
+        ],
+        'fen_start': 'r2qkbnr/p1ppp1p1/bp5p/4n3/1P3p2/2BP4/P1P1PPPP/RN1QKBNR w KQkq - 0 1',
+        'fen_end': 'r2qkbnr/p1ppp1p1/bp5p/4B3/1P3p2/3P4/P1P1PPPP/RN1QKBNR b KQkq - 0 1'
     },
     {
         'id': 7,
@@ -134,7 +146,9 @@ lessons = [
                 'question': 'How would you notate a Queen giving check on f7?',
                 'answer': 'Qf7+'
             }
-        ]
+        ],
+        'fen_start': 'rnb1kb1r/pp1p1ppp/2p2n2/4P3/2BQ4/7N/PPP3PP/RNB1K2R b KQkq - 0 1',
+        'fen_end': 'rnb1kb1r/pp1Q1ppp/2p2n2/4P3/2B5/7N/PPP3PP/RNB1K2R b KQkq - 0 1'
     },
     {
         'id': 8,
@@ -154,7 +168,9 @@ lessons = [
                 'question': 'How would you notate a Queen giving checkmate on h7?',
                 'answer': 'Qh7#'
             }
-        ]
+        ],
+        'fen_start': 'r1bqkb1r/p1pp1ppp/nP5n/4p3/2B1P3/5Q2/PP1P1PPP/RNB1K1NR b KQkq - 0 1',
+        'fen_end': 'r1bqkb1r/p1pp1Qpp/nP5n/4p3/2B1P3/8/PP1P1PPP/RNB1K1NR b KQkq - 0 1'        
     }
 ]
 
