@@ -25,23 +25,33 @@
   background-color: #0d6efd;
 }
 
-/* Banner styling for lessons */
-.alert-info {
-  font-size: 1.1em;
+/* Global Styles */
+:root {
+    --primary-blue: #e8f0f7;
+    --secondary-blue: #b8d1e5;
+    --text-color: #2c3e50;
+    --button-hover: #a3c2d9;
+    --gradient-start: #34495e;
+    --gradient-end: #2c3e50;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    background: white;
 }
 
 /* Navbar Styles */
-.navbar {
-    background-color: steelblue;
+.custom-navbar {
+    background-color: var(--text-color);
+    padding: 1rem 2rem;
 }
 
-.custom-navbar .navbar-brand,
-.custom-navbar .btn-outline-light {
-    color: white;
-}
-
-.custom-navbar .btn-outline-light:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+.navbar-brand {
+    color: var(--primary-blue) !important;
+    font-size: 1.5rem;
 }
 
 /* General Styles */
@@ -51,64 +61,90 @@ body {
 }
 
 /* Home Page Styles */
-.section-list {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.section-item-wrapper {
-    position: relative;
-    display: block;
-    margin: 0.5rem 0;
-}
-
-.section-item {
-    display: block;
-    width: 100%;
-    padding: 1rem;
+.home-container {
+    min-height: calc(100vh - 76px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: white;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    text-decoration: none;
-    color: #212529;
-    transition: all 0.3s ease;
-    cursor: pointer;
+}
+
+.home-content {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    height: 80vh;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.left-section {
+    flex: 1;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.right-section {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.background-image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.title-section {
     text-align: left;
 }
 
-.section-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.section-item.active {
-    background-color: #007bff;
-    color: white;
-    border-color: #0056b3;
-}
-
-.section-number {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
-    text-align: center;
-    background: rgba(255,255,255,0.2);
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.start-here-arrow {
-    position: absolute;
-    right: 105%;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #28a745;
+.title-section h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
     font-weight: bold;
-    font-size: 1.2rem;
-    white-space: nowrap;
+    line-height: 1.2;
 }
 
+.title-section p {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.button-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.home-button {
+    background-color: var(--text-color);
+    color: var(--primary-blue);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.home-button:hover {
+    background-color: var(--button-hover);
+    color: var(--text-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
 /* Chess Board Styles */
 .board-container {
     position: relative;
