@@ -1,165 +1,157 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="container mt-4">
-    <!-- Progress Bar -->
-    <div class="progress mb-4">
-        <div class="progress-bar" role="progressbar" 
-             style="width: {{ (lesson_id / total_lessons * 100)|round }}%"
-             aria-valuenow="{{ lesson_id }}"
-             aria-valuemin="0" aria-valuemax="{{ total_lessons }}">
-        </div>
+  <!-- Progress Bar -->
+  <div class="progress mb-4">
+    <div class="progress-bar"
+         role="progressbar"
+         style="width: {{ (lesson_id / total_lessons * 100)|round }}%"
+         aria-valuenow="{{ lesson_id }}"
+         aria-valuemin="0"
+         aria-valuemax="{{ total_lessons }}">
     </div>
+  </div>
 
-    <!-- Banner -->
-    <div class="alert alert-info text-center mb-4">
-        <h4>{{ lesson.title }}</h4>
-        <p class="mb-0">{{ lesson.banner }}</p>
-    </div>
+  <!-- Banner -->
+  <div class="alert alert-info text-center mb-4">
+    <h4>{{ lesson.title }}</h4>
+    <p class="mb-0">{{ lesson.banner }}</p>
+  </div>
 
-    <!-- Lesson Content -->
-    {% if lesson.type == 'board' %}
-        <div class="row justify-content-center mb-4">
-            <!-- White's Board -->
-            <div class="col-md-5">
-                <div class="board-container">
-                    <h5 class="text-center">White's View</h5>
-                    {% if lesson.notation_type == 'ranks' %}
-                    <div class="rank-labels">
-                        {% for rank in range(8, 0, -1) %}
-                            <div>{{ rank }}</div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    <div id="white-board" class="chess-board"></div>
-                    {% if lesson.notation_type == 'files' or lesson.notation_type == 'ranks' %}
-                    <div class="file-labels">
-                        {% for file in ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] %}
-                            <div>{{ file }}</div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
-
-            <!-- Black's Board -->
-            <div class="col-md-5">
-                <div class="board-container">
-                    <h5 class="text-center">Black's View</h5>
-                    {% if lesson.notation_type == 'ranks' %}
-                    <div class="rank-labels">
-                        {% for rank in range(1, 9) %}
-                            <div>{{ rank }}</div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    <div id="black-board" class="chess-board"></div>
-                    {% if lesson.notation_type == 'files' or lesson.notation_type == 'ranks' %}
-                    <div class="file-labels">
-                        {% for file in ['h', 'g', 'f', 'e', 'd', 'c', 'b', 'a'] %}
-                            <div>{{ file }}</div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-
-    {% elif lesson.type == 'pieces' %}
-        <div class="chess-pieces">
-            <div class="piece-card">
-                <div class="piece-symbol">♔</div>
-                <h5>King</h5>
-                <div class="piece-notation">K</div>
-            </div>
-            <div class="piece-card">
-                <div class="piece-symbol">♕</div>
-                <h5>Queen</h5>
-                <div class="piece-notation">Q</div>
-            </div>
-            <div class="piece-card">
-                <div class="piece-symbol">♗</div>
-                <h5>Bishop</h5>
-                <div class="piece-notation">B</div>
-            </div>
-            <div class="piece-card">
-                <div class="piece-symbol">♘</div>
-                <h5>Knight</h5>
-                <div class="piece-notation">N</div>
-            </div>
-            <div class="piece-card">
-                <div class="piece-symbol">♖</div>
-                <h5>Rook</h5>
-                <div class="piece-notation">R</div>
-            </div>
-            <div class="piece-card">
-                <div class="piece-symbol">♙</div>
-                <h5>Pawn</h5>
-                <div class="piece-notation">file/rank</div>
-            </div>
-        </div>
-
-    {% elif lesson.type == 'moves' %}
-        <div class="row justify-content-center mb-4">
-            <div class="col-md-6">
-                <div class="board-container">
-                    <div id="move-board" class="chess-board"></div>
-                    <div class="move-description text-center mt-3" 
-                         data-start="{{ lesson.moves[0].start }}"
-                         data-end="{{ lesson.moves[0].end }}">
-                        <p>{{ lesson.moves[0].description }}</p>
-                        {% if 'pawn captures' in lesson.title.lower() %}
-                            <p class="notation-hint"><em>Notation format: starting file x file/rank</em></p>
-                        {% elif 'captures' in lesson.title.lower() %}
-                            <p class="notation-hint"><em>Notation format: Piece x file/rank</em></p>
-                        {% elif 'check' in lesson.title.lower() and 'checkmate' not in lesson.title.lower() %}
-                            <p class="notation-hint"><em>Notation format: Piece file/rank+</em></p>
-                        {% elif 'checkmate' in lesson.title.lower() %}
-                            <p class="notation-hint"><em>Notation format: Piece file/rank#</em></p>
-                        {% else %}
-                            <p class="notation-hint"><em>Notation format: file/rank</em></p>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-
-    <!-- Practice Questions -->
-    <div class="practice-questions mt-4">
-        <h5>Practice Questions:</h5>
-        <div class="row justify-content-center">
-            {% for q in lesson.practice_questions %}
-                <div class="col-md-5">
-                    <div class="practice-question mb-4">
-                        <p class="mb-2"><strong>{{ q.question }}</strong></p>
-                        <div class="d-flex align-items-center">
-                            <button class="btn btn-outline-primary reveal-btn" 
-                                    data-answer="{{ q.answer }}">Reveal Answer</button>
-                            <span class="answer ms-3" style="display: none;"></span>
-                        </div>
-                    </div>
-                </div>
+  <!-- Lesson Content -->
+  {% if lesson.type == 'board' %}
+    <div class="row justify-content-center mb-4">
+      <!-- White's Board -->
+      <div class="col-md-5">
+        <div class="board-container">
+          <h5 class="text-center">White's View</h5>
+          {% if lesson.notation_type == 'ranks' %}
+          <div class="rank-labels">
+            {% for rank in range(8,0,-1) %}<div>{{ rank }}</div>{% endfor %}
+          </div>
+          {% endif %}
+          <div id="white-board" class="chess-board"></div>
+          {% if lesson.notation_type in ['files','ranks'] %}
+          <div class="file-labels">
+            {% for file in ['a','b','c','d','e','f','g','h'] %}
+              <div>{{ file }}</div>
             {% endfor %}
+          </div>
+          {% endif %}
         </div>
+      </div>
+
+      <!-- Black's Board -->
+      <div class="col-md-5">
+        <div class="board-container">
+          <h5 class="text-center">Black's View</h5>
+          {% if lesson.notation_type == 'ranks' %}
+          <div class="rank-labels">
+            {% for rank in range(1,9) %}<div>{{ rank }}</div>{% endfor %}
+          </div>
+          {% endif %}
+          <div id="black-board" class="chess-board"></div>
+          {% if lesson.notation_type in ['files','ranks'] %}
+          <div class="file-labels">
+            {% for file in ['h','g','f','e','d','c','b','a'] %}
+              <div>{{ file }}</div>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
     </div>
 
-    <!-- Navigation Controls -->
-    <div class="nav-controls mt-4">
-        {% if lesson_id > 1 %}
-            <a href="{{ url_for('learn', lesson_id=lesson_id - 1) }}" 
-               class="btn btn-outline-primary">← Previous Lesson</a>
-        {% endif %}
-
-        {% if lesson_id < total_lessons %}
-            <a href="{{ url_for('learn', lesson_id=lesson_id + 1) }}" 
-               class="btn btn-primary">Next Lesson →</a>
-        {% else %}
-            <a href="{{ url_for('quiz', question_id=1) }}" 
-               class="btn btn-success">Take the Quiz →</a>
-        {% endif %}
+  {% elif lesson.type == 'pieces' %}
+    <div class="chess-pieces">
+      <div class="piece-card">
+        <div class="piece-symbol">♔</div><h5>King</h5><div class="piece-notation">K</div>
+      </div>
+      <div class="piece-card">
+        <div class="piece-symbol">♕</div><h5>Queen</h5><div class="piece-notation">Q</div>
+      </div>
+      <div class="piece-card">
+        <div class="piece-symbol">♗</div><h5>Bishop</h5><div class="piece-notation">B</div>
+      </div>
+      <div class="piece-card">
+        <div class="piece-symbol">♘</div><h5>Knight</h5><div class="piece-notation">N</div>
+      </div>
+      <div class="piece-card">
+        <div class="piece-symbol">♖</div><h5>Rook</h5><div class="piece-notation">R</div>
+      </div>
+      <div class="piece-card">
+        <div class="piece-symbol">♙</div><h5>Pawn</h5><div class="piece-notation">file/rank</div>
+      </div>
     </div>
+
+  {% elif lesson.type == 'moves' %}
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-6">
+        <div class="board-container">
+          <!-- LOOPING MOVE BOARD with data-attributes -->
+          <div id="move-board"
+               class="chess-board"
+               data-start-fen="{{ lesson.fen_start }}"
+               data-end-fen="{{ lesson.fen_end }}"
+               data-from="{{ lesson.moves[0].start }}"
+               data-to="{{ lesson.moves[0].end }}">
+          </div>
+
+          <div class="move-description text-center mt-3">
+            <p>{{ lesson.moves[0].description }}</p>
+            {% if 'pawn captures' in lesson.title.lower() %}
+              <p class="notation-hint"><em>Notation format: starting file x file/rank</em></p>
+            {% elif 'captures' in lesson.title.lower() %}
+              <p class="notation-hint"><em>Notation format: Piece x file/rank</em></p>
+            {% elif 'checkmate' in lesson.title.lower() %}
+              <p class="notation-hint"><em>Notation format: Piece file/rank#</em></p>
+            {% elif 'check' in lesson.title.lower() %}
+              <p class="notation-hint"><em>Notation format: Piece file/rank+</em></p>
+            {% else %}
+              <p class="notation-hint"><em>Notation format: file/rank</em></p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- Practice Questions -->
+  <div class="practice-questions mt-4">
+    <h5>Practice Questions:</h5>
+    <div class="row justify-content-center">
+      {% for q in lesson.practice_questions %}
+      <div class="col-md-5">
+        <div class="practice-question mb-4">
+          <p class="mb-2"><strong>{{ q.question }}</strong></p>
+          <div class="d-flex align-items-center">
+            <button class="btn btn-outline-primary reveal-btn"
+                    data-answer="{{ q.answer }}">
+              Reveal Answer
+            </button>
+            <span class="answer ms-3" style="display:none;"></span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Navigation Controls -->
+  <div class="nav-controls mt-4">
+    {% if lesson_id > 1 %}
+      <a href="{{ url_for('learn', lesson_id=lesson_id-1) }}"
+         class="btn btn-outline-primary">← Previous Lesson</a>
+    {% endif %}
+    {% if lesson_id < total_lessons %}
+      <a href="{{ url_for('learn', lesson_id=lesson_id+1) }}"
+         class="btn btn-primary">Next Lesson →</a>
+    {% else %}
+      <a href="{{ url_for('quiz', question_id=1) }}"
+         class="btn btn-success">Take the Quiz →</a>
+    {% endif %}
+  </div>
 </div>
 
-<!-- JavaScript for interactive elements -->
 <script src="{{ url_for('static', filename='js/lesson.js') }}"></script>
 {% endblock %}
