@@ -326,3 +326,13 @@ body {
 .highlight-rank-4 .square-g4 {
     background-color: rgb(238, 240, 181) !important;
 }
+
+/* Banner Styles */
+.alert-info {
+    background-color: var(--button-hover);
+    border: none;
+    color: var(--text-color);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+}
