@@ -22,7 +22,7 @@
 }
 
 .progress-bar {
-  background-color: #0d6efd;
+  background-color: var(--button-hover);
 }
 
 /* Global Styles */
@@ -335,4 +335,10 @@ body {
     padding: 1rem;
     margin: 1rem 0;
     border-radius: 8px;
+}
+
+#question-text {
+    color: var(--button-hover);
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
 }
