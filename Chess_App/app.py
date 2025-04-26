@@ -99,7 +99,7 @@ lessons = [
         ],
         'practice_questions': [
             {
-                'question': 'How would you notate a pawn on the e-file capturing on e5?',
+                'question': 'How would you notate a pawn on the d-file capturing on e5?',
                 'answer': 'dxe5'
             }
         ],
