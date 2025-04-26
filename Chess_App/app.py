@@ -76,8 +76,8 @@ lessons = [
         ],
         'practice_questions': [
             {
-                'question': 'How would you notate a pawn moving from c2 to c4?',
-                'answer': 'c4'
+                'question': 'How would you notate a pawn moving from e2 to e4?',
+                'answer': 'e4'
             }
         ],
         'fen_start': 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
@@ -99,12 +99,12 @@ lessons = [
         ],
         'practice_questions': [
             {
-                'question': 'How would you notate a pawn on the d-file capturing on e5?',
+                'question': 'How would you notate a pawn on the e-file capturing on e5?',
                 'answer': 'dxe5'
             }
         ],
-        'fen_start': 'rnbqkbnr/ppppp1pp/8/5p2/4P3/8/PPPP1PPP/RNBQKBNR w KQkq f6 0 1',
-        'fen_end': 'rnbqkbnr/ppppp1pp/8/5P2/8/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1'
+        'fen_start': 'rnbqkbnr/pppp1ppp/8/4p3/3P4/8/PPP1PPPP/RNBQKBNR w KQkq e6 0 1',
+        'fen_end': 'rnbqkbnr/pppp1ppp/8/4P3/8/8/PPP1PPPP/RNBQKBNR b KQkq - 0 1'
     },
     {
         'id': 6,
@@ -121,8 +121,8 @@ lessons = [
         ],
         'practice_questions': [
             {
-                'question': 'How would you notate a Bishop capturing on g7?',
-                'answer': 'Bxg7'
+                'question': 'How would you notate the Bishop capturing the Knight on e5?',
+                'answer': 'Bxe5'
             }
         ],
         'fen_start': 'r2qkbnr/p1ppp1p1/bp5p/4n3/1P3p2/2BP4/P1P1PPPP/RN1QKBNR w KQkq - 0 1',
@@ -137,17 +137,17 @@ lessons = [
             {
                 'description': 'Queen gives check',
                 'start': 'd1',
-                'end': 'h5',
-                'notation': 'Qh5+'
+                'end': 'd7',
+                'notation': 'Qd7+'
             }
         ],
         'practice_questions': [
             {
-                'question': 'How would you notate a Queen giving check on f7?',
-                'answer': 'Qf7+'
+                'question': 'How would you notate a Queen giving check on d7?',
+                'answer': 'Qd7+'
             }
         ],
-        'fen_start': 'rnb1kb1r/pp1p1ppp/2p2n2/4P3/2BQ4/7N/PPP3PP/RNB1K2R b KQkq - 0 1',
+        'fen_start': 'rnb1kb1r/pp1p1ppp/2p2n2/4P3/2B5/7N/PPP3PP/RNBQK2R b KQkq - 0 1',
         'fen_end': 'rnb1kb1r/pp1Q1ppp/2p2n2/4P3/2B5/7N/PPP3PP/RNB1K2R b KQkq - 0 1'
     },
     {
@@ -158,15 +158,15 @@ lessons = [
         'moves': [
             {
                 'description': 'Queen delivers checkmate',
-                'start': 'd1',
-                'end': 'h7',
-                'notation': 'Qh7#'
+                'start': 'f3',
+                'end': 'f7',
+                'notation': 'Qf7#'
             }
         ],
         'practice_questions': [
             {
-                'question': 'How would you notate a Queen giving checkmate on h7?',
-                'answer': 'Qh7#'
+                'question': 'How would you notate a Queen giving checkmate on f7?',
+                'answer': 'Qf7#'
             }
         ],
         'fen_start': 'r1bqkb1r/p1pp1ppp/nP5n/4p3/2B1P3/5Q2/PP1P1PPP/RNB1K1NR b KQkq - 0 1',
