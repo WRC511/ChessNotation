@@ -1,8 +1,8 @@
-// Run once the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", function () {
-  // Initialize chessboards if they exist
+// static/js/lesson.js
+document.addEventListener("DOMContentLoaded", () => {
+  // ─── 1) WHITE BOARD ─────────────────────────────────────────────
   if (document.getElementById('white-board')) {
-    const whiteBoard = Chessboard('white-board', {
+    Chessboard('white-board', {
       position: 'start',
       orientation: 'white',
       pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png',
@@ -10,8 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // ─── 2) BLACK BOARD ─────────────────────────────────────────────
   if (document.getElementById('black-board')) {
-    const blackBoard = Chessboard('black-board', {
+    Chessboard('black-board', {
       position: 'start',
       orientation: 'black',
       pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png',
@@ -19,104 +20,116 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  if (document.getElementById('move-board')) {
-    const moveBoard = Chessboard('move-board', {
-      position: 'start',
+  // ─── 3) MOVE BOARD + LOOP ────────────────────────────────────────
+  const el = document.getElementById('move-board');
+  if (el) {
+    // read your data-attributes
+    const startFen      = el.dataset.startFen;
+    const endFen        = el.dataset.endFen;
+    const fromSq        = el.dataset.from;
+    const toSq          = el.dataset.to;
+    const cycleInterval = 2000;  // total time per cycle (ms)
+    const arrowDrawTime =  500;  // how long the arrow “grows” (ms)
+    const slideTime     =  400;  // Chessboard.js moveSpeed (ms)
+
+    // initialize at start position
+    const board = Chessboard('move-board', {
+      position:    startFen,
       orientation: 'white',
-      pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png',
-      showNotation: true
+      showNotation:true,
+      moveSpeed:   slideTime,
+      snapSpeed:   150,
+      pieceTheme:  'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png'
     });
 
-    // Get move data from the page
-    const moveDescription = document.querySelector('.move-description');
-    if (moveDescription) {
-      const start = moveDescription.dataset.start;
-      const end = moveDescription.dataset.end;
-      
-      // Draw arrow from start to end square
+    // draw one arrow instantly (returns the arrow DIV so you can fade / remove it)
+    function drawArrow() {
+      const s = el.querySelector(`[data-square="${fromSq}"]`);
+      const e = el.querySelector(`[data-square="${toSq}"]`);
+      if (!s || !e) return null;
+
+      const hostRect = el.parentElement.getBoundingClientRect();
+      const a = s.getBoundingClientRect();
+      const b = e.getBoundingClientRect();
+      const x1 = a.left + a.width/2  - hostRect.left;
+      const y1 = a.top  + a.height/2 - hostRect.top;
+      const x2 = b.left + b.width/2  - hostRect.left;
+      const y2 = b.top  + b.height/2 - hostRect.top;
+      const dx = x2 - x1, dy = y2 - y1;
+      const length = Math.hypot(dx, dy);
+      const angle  = Math.atan2(dy, dx) * 180 / Math.PI;
+
       const arrow = document.createElement('div');
       arrow.className = 'move-arrow';
-      
-      // Calculate arrow position and rotation
-      const startSquare = document.querySelector(`#move-board [data-square="${start}"]`);
-      const endSquare = document.querySelector(`#move-board [data-square="${end}"]`);
-      
-      if (startSquare && endSquare) {
-        const startRect = startSquare.getBoundingClientRect();
-        const endRect = endSquare.getBoundingClientRect();
-        
-        const boardContainer = document.querySelector('.board-container');
-        const boardRect = boardContainer.getBoundingClientRect();
-        
-        // Position arrow relative to the board container
-        const startX = startRect.left + startRect.width / 2 - boardRect.left;
-        const startY = startRect.top + startRect.height / 2 - boardRect.top;
-        const endX = endRect.left + endRect.width / 2 - boardRect.left;
-        const endY = endRect.top + endRect.height / 2 - boardRect.top;
-        
-        // Calculate arrow length and angle
-        const dx = endX - startX;
-        const dy = endY - startY;
-        const length = Math.sqrt(dx * dx + dy * dy);
-        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-        
-        // Style the arrow
-        arrow.style.position = 'absolute';
-        arrow.style.left = `${startX}px`;
-        arrow.style.top = `${startY}px`;
-        arrow.style.width = `${length}px`;
-        arrow.style.height = '10px';
-        arrow.style.transformOrigin = '0 50%';
-        arrow.style.transform = `rotate(${angle}deg)`;
-        arrow.style.backgroundColor = 'rgba(255, 0, 0, 0.7)';
-        arrow.style.clipPath = 'polygon(0 35%, 85% 35%, 85% 0%, 100% 50%, 85% 100%, 85% 65%, 0 65%)';
-        arrow.style.zIndex = '100';
-        
-        boardContainer.appendChild(arrow);
-      }
+      arrow.style.width     = `${length}px`;
+      arrow.style.left      = `${x1}px`;
+      arrow.style.top       = `${y1}px`;
+      arrow.style.transform = `rotate(${angle}deg) scaleX(0)`;
+      el.parentElement.appendChild(arrow);
+
+      // trigger the CSS animation
+      requestAnimationFrame(() => {
+        arrow.style.opacity   = '1';
+        arrow.style.transform = `rotate(${angle}deg) scaleX(1)`;
+      });
+
+      return arrow;
     }
+
+    // build a simple toggle loop
+    let showingMove = false;
+    setInterval(() => {
+      if (!showingMove) {
+        // → reset board, clear any old arrows
+        board.position(startFen, false);
+        document.querySelectorAll('.move-arrow').forEach(a => a.remove());
+
+        // → draw the arrow, then slide the piece
+        const arrow = drawArrow();
+        if (arrow) {
+          setTimeout(() => {
+            board.position(endFen, true);
+          }, arrowDrawTime);
+        } else {
+          // fallback: no arrow? just slide
+          board.position(endFen, true);
+        }
+
+      } else {
+        // ← clear arrow & reset board back
+        document.querySelectorAll('.move-arrow').forEach(a => a.remove());
+        board.position(startFen, true);
+      }
+
+      showingMove = !showingMove;
+    }, cycleInterval);
   }
 
-  // Handle reveal answer buttons
-  const revealButtons = document.querySelectorAll('.reveal-btn');
-  revealButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      // Get the answer from the data attribute
-      const answer = this.getAttribute('data-answer');
-      
-      // Find the answer span that follows this button
-      const answerSpan = this.nextElementSibling;
-      
-      if (answerSpan && answerSpan.classList.contains('answer')) {
-        // Show the answer text
-        answerSpan.textContent = answer;
-        answerSpan.style.display = 'inline';
-        
-        // Add fade-in effect
-        answerSpan.style.opacity = '0';
-        setTimeout(() => {
-          answerSpan.style.transition = 'opacity 0.5s ease-in-out';
-          answerSpan.style.opacity = '1';
-        }, 10);
-        
-        // Disable the button and update its appearance
-        this.disabled = true;
-        this.classList.remove('btn-outline-primary');
-        this.classList.add('btn-secondary');
-      }
+  // ─── 4) PRACTICE “REVEAL” BUTTONS ─────────────────────────────────
+  document.querySelectorAll('.reveal-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const ans = this.dataset.answer;
+      const sp  = this.nextElementSibling;
+      sp.textContent = ans;
+      sp.style.display = 'inline';
+      sp.style.opacity = '0';
+      setTimeout(() => {
+        sp.style.transition = 'opacity 0.5s ease-in';
+        sp.style.opacity = '1';
+      }, 10);
+      this.disabled = true;
+      this.classList.replace('btn-outline-primary','btn-secondary');
     });
   });
 
-  // Log page visit
+  // ─── 5) LOGGING ───────────────────────────────────────────────────
   fetch('/log', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: {'Content-Type':'application/json'},
     body: JSON.stringify({
       event: 'page_view',
       lesson_id: document.querySelector('.progress-bar')?.getAttribute('aria-valuenow'),
       timestamp: new Date().toISOString()
     })
-  }).catch(error => console.log('Error logging page visit:', error));
+  }).catch(e => console.warn('Log error:', e));
 });
