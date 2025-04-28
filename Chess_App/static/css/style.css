@@ -327,6 +327,11 @@ body {
     background-color: rgb(238, 240, 181) !important;
 }
 
+/* Highlight for a single square (d3) */
+.highlight-square-d3 .square-d3 {
+    background-color: rgb(203, 205, 87) !important; 
+}
+
 /* Banner Styles */
 .alert-info {
     background-color: var(--button-hover);

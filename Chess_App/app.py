@@ -253,6 +253,29 @@ quiz_questions = [
         'move': {'from': 'e7', 'to': 'e8', 'promotion': 'q'},
         'animated': True,
         'lesson_id': 4
+    },
+    {
+        'index': 8,
+        'question': "What is the correct notation for a Bishop moving to d3? (White's move)",
+        'options': ["Bd3", "Bxd3", "BD3", "d3"],
+        'correct': 0,
+        'explanation': "The correct notation is Bd3. For pieces other than pawns, we use the piece's letter (B for Bishop) followed by the destination square.",
+        'startFen': "rnbqkbnr/pppp1ppp/5n2/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 1 2",
+        'move': {'from': 'f1', 'to': 'd3'},
+        'animated': True,
+        'lesson_id': 3
+    },
+    {
+        'index': 9,
+        'question': "What is the name of this square?",
+        'options': ["D3", "d3", "3d", "d"],
+        'correct': 1,
+        'explanation': "The correct notation is d3. For board locations, we use the file letter in lower case followed by the rank number.",
+        'startFen': "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        'move': None,
+        'highlight': ['d3'],
+        'animated': False,
+        'lesson_id': 1
     }
 ]
 
