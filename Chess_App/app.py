@@ -160,7 +160,7 @@ lessons = [
                 'description': 'Queen delivers checkmate',
                 'start': 'f3',
                 'end': 'f7',
-                'notation': 'Qf7#'
+                'notation': 'Qxf7#'
             }
         ],
         'practice_questions': [
