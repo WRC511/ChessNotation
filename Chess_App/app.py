@@ -245,17 +245,6 @@ quiz_questions = [
     },
     {
         'index': 7,
-        'question': "How would you write this move in algebraic notation? (White's move)",
-        'options': ["e7-e8=Q", "e8=Q", "e8Q", "e7-e8Q"],
-        'correct': 1,
-        'explanation': "The correct notation is e8=Q. When a pawn promotes, we write the destination square followed by '=' and the piece it promotes to. We don't need to specify the starting square.",
-        'startFen': "8/4P3/8/8/3k4/8/8/4K3 w - - 0 1",
-        'move': {'from': 'e7', 'to': 'e8', 'promotion': 'q'},
-        'animated': True,
-        'lesson_id': 4
-    },
-    {
-        'index': 8,
         'question': "What is the correct notation for a Bishop moving to d3? (White's move)",
         'options': ["Bd3", "Bxd3", "BD3", "d3"],
         'correct': 0,
@@ -266,7 +255,7 @@ quiz_questions = [
         'lesson_id': 3
     },
     {
-        'index': 9,
+        'index': 8,
         'question': "What is the name of this square?",
         'options': ["D3", "d3", "3d", "d"],
         'correct': 1,
