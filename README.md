@@ -1,6 +1,10 @@
 # ChessNotation
 An application that teaches algebraic notation in Chess within 10 minutes.
 
+##### To Run:
+**Download all files and from command line of the same directory as app.py run
+the command "python app.py"**
+
 Current Roles
 <br>
 Role 1: Learning Module Developer (UI Focus)<br>
