@@ -138,13 +138,13 @@ lessons = [
                 'description': 'Queen gives check',
                 'start': 'd1',
                 'end': 'd7',
-                'notation': 'Qd7+'
+                'notation': 'Qxd7+'
             }
         ],
         'practice_questions': [
             {
                 'question': 'How would you notate a Queen giving check on d7?',
-                'answer': 'Qd7+'
+                'answer': 'Qxd7+'
             }
         ],
         'fen_start': 'rnb1kb1r/pp1p1ppp/2p2n2/4P3/2B5/7N/PPP3PP/RNBQK2R b KQkq - 0 1',
@@ -166,7 +166,7 @@ lessons = [
         'practice_questions': [
             {
                 'question': 'How would you notate a Queen giving checkmate on f7?',
-                'answer': 'Qf7#'
+                'answer': 'Qxf7#'
             }
         ],
         'fen_start': 'r1bqkb1r/p1pp1ppp/nP5n/4p3/2B1P3/5Q2/PP1P1PPP/RNB1K1NR b KQkq - 0 1',
