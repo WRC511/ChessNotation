@@ -169,8 +169,8 @@ lessons = [
                 'answer': 'Qxf7#'
             }
         ],
-        'fen_start': 'r1bqkb1r/p1pp1ppp/nP5n/4p3/2B1P3/5Q2/PP1P1PPP/RNB1K1NR b KQkq - 0 1',
-        'fen_end': 'r1bqkb1r/p1pp1Qpp/nP5n/4p3/2B1P3/8/PP1P1PPP/RNB1K1NR b KQkq - 0 1'        
+        'fen_start': 'r1bqkb1r/p1pp1ppp/nP6/4p3/2B1P1n1/5Q2/PP1P1PPP/RNB1K1NR w KQkq - 0 1',
+        'fen_end': 'r1bqkb1r/p1pp1Qpp/nP6/4p3/2B1P1n1/8/PP1P1PPP/RNB1K1NR b KQkq - 0 1'        
     }
 ]
 
