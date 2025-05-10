@@ -4,7 +4,7 @@
     <div class="col-md-8 mx-auto">
       <!-- Score Display -->
       <div class="text-center mb-4">
-        <h3>Score: <span id="score">0</span>/5</h3>
+        <h3>Score: <span id="score">0</span>/<span id="currentQuestion">0</span></h3>
         <div class="progress mt-2" style="height: 20px">
           <div
             id="progress-bar"
@@ -134,6 +134,9 @@
               return;
           }
 
+          // Update total questions display
+          $('#currentQuestion').text(currentQuestion);
+
           if (animationTimer) {
               clearInterval(animationTimer);
               animationTimer = null;
@@ -227,9 +230,15 @@
               feedbackText.text('Incorrect. ' + question.explanation);
               incorrectQuestions.push(question);
           }
+          $('#currentQuestion').text(currentQuestion + 1);
 
           feedbackContainer.removeClass('d-none');
           $('#options-container').hide();
+
+          // Change button text if this is the last question
+          if (currentQuestion === questions.length - 1) {
+              $('#next-question').text('Finish Quiz');
+          }
 
           if (question.move) {
               game = new Chess(question.startFen);
@@ -286,10 +295,14 @@
       }
 
       $('#next-question').click(function() {
-          currentQuestion++;
-          $('#feedback-container').addClass('d-none');
-          $('#options-container').show();
-          displayQuestion();
+          if (currentQuestion === questions.length - 1) {
+              showResults();
+          } else {
+              currentQuestion++;
+              $('#feedback-container').addClass('d-none');
+              $('#options-container').show();
+              displayQuestion();
+          }
       });
 
       // Initialize the quiz
